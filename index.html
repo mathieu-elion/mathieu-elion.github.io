@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathieu Elion | Product & UX Designer</title>
+    <meta name="description" content="Portfolio de Mathieu Elion, Product Designer hybride entre le gaming et la finance.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <!-- Variables config is imported inside main.css -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body class="bg-main m-0 p-0 overflow-x-hidden w-full">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+
+    <!-- The header and main layout take the full width for the background -->
+    <div class="relative z-10 w-full">
+
+<!-- ===================================================================             SITE HEADER
+             ========================================================================== -->
+        <!-- Center the content using layout-wrapper inside full-width container -->
+        <header id="site-header" class="site-header">
+            <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between h-full">
+                <a href="./index.html" class="logo font-mono font-bold text-accent hover-effect"><span class="logo-text">ME.</span><span class="nav-breadcrumb"></span></a>
+                <nav class="nav-navigation relative">
+                    <button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+                        <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    <button class="nav-menu-toggle" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Ouvrir le menu">
+                        <span class="menu-toggle-text">Menu</span>
+                        <svg class="menu-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div id="nav-links-menu" class="nav-links-container">
+                        <a href="#projects" class="nav-link">Projets</a>
+                        <a href="#playground" class="nav-link-playground">Playground</a>
+                        <a href="#site-footer" class="nav-link">Contact</a>
+                        <a href="./assets/cv-mathieu-elion.pdf" class="nav-cv-btn" target="_blank" rel="noopener noreferrer">CV</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main-content" class="w-full relative z-10">
+
+            <!-- ==========================================================================
+                 HERO SECTION
+                 ========================================================================== -->
+            <section id="hero" class="relative min-h-[70vh] flex flex-col justify-center overflow-hidden w-full m-0 p-0 w-screen max-w-[100vw]" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
+                <!-- Background Canvas (Spans entire hero section) -->
+                <div class="hero-canvas-container absolute inset-0 z-0 w-full h-full overflow-hidden">
+                    <canvas id="hero-interactive-canvas" class="w-full h-full block"></canvas>
+                </div>
+
+                <div class="layout-wrapper hero-grid relative z-10 section-padding w-full mx-auto">
+
+                    <!-- Left Column: Content -->
+                    <div class="hero-left max-w-2xl">
+
+                        <!-- Easter Egg: Hero Text Tooltip -->
+                        <div class="prompt-badge-wrapper" aria-hidden="true">
+                            <button class="prompt-badge" tabindex="0">AI 🪄</button>
+                            <div class="prompt-tooltip">
+                                <div class="prompt-code">
+                                    <span class="prompt-label">> Prompt Used:</span>
+                                    <p>"Génère un texte d'introduction minimaliste pour un Product Designer junior."</p>
+                                </div>
+                                <div class="human-fix">
+                                    <span class="prompt-label">> Human Fix:</span>
+                                    <p>"Le texte initial de l'IA était ultra-générique. J'ai tout réécrit à la main pour assumer mon vrai profil : ce grand écart entre l'univers du gaming et la rigueur de la finance."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1 class="hero-title">Mathieu Elion</h1>
+                        <span class="hero-subtitle font-mono text-accent">Product Designer — UX Designer</span>
+                        <p class="hero-text mb-8">
+                            De la gestion créative d'une communauté gaming à la rigueur des services financiers chez Société Générale CIB, mon parcours est guidé par une curiosité de nature et l'envie d'apprendre. Touche-à-tout et passionné par l'exploration du design sous toutes ses formes, j'aime décortiquer les problèmes denses pour concevoir des parcours fluides. Diplômé en septembre 2026, je cherche mon prochain terrain d'apprentissage.
+                        </p>
+
+                        <!-- Call To Actions -->
+                        <div class="hero-actions flex gap-4 relative" style="width: fit-content; z-index: 50;">
+                             <!-- Easter Egg: Hero Buttons Tooltip -->
+                            <div class="prompt-badge-wrapper" style="top: -15px; right: -40px;" aria-hidden="true">
+                                <button class="prompt-badge" tabindex="0">AI 🪄</button>
+                                <!-- Apply custom class for top tooltip -->
+                                <div class="prompt-tooltip tooltip-top">
+                                    <div class="prompt-code">
+                                        <span class="prompt-label">> Prompt Used:</span>
+                                        <p>"Ajoute des boutons de contact sous le texte du hero."</p>
+                                    </div>
+                                    <div class="human-fix">
+                                        <span class="prompt-label">> Human Fix:</span>
+                                        <p>"Erreur d'UX classique de l'IA qui avait masqué mon CV tout en bas du site. Les recruteurs sont pressés : les boutons d'action doivent être accessibles dès le premier regard."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary">Télécharger mon CV</a>
+                            <a href="mailto:mathieu.elion@gmail.com" class="btn btn-outline">Me contacter</a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Status Tracker -->
+                    <div class="hero-right flex flex-col justify-center">
+                        <div class="status-tracker">
+
+                            <!-- Row 1 -->
+                            <div class="status-row">
+                                <span class="status-label font-mono">DISPONIBILITÉ</span>
+                                <p class="status-value">Poste de Product ou UX Designer à partir de septembre 2026.</p>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="status-row">
+                                <span class="status-label font-mono">FOCUS ACTUEL</span>
+                                <p class="status-value">Rédaction d'un mémoire sur la manipulation insidieuse.</p>
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div class="status-row">
+                                <span class="status-label font-mono">LOCALISATION</span>
+                                <p class="status-value">Paris - France</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 MAIN PROJECTS GRID
+                 ========================================================================== -->
+            <section id="projects" class="border-t relative z-10 bg-main w-full m-0 p-0 w-screen max-w-[100vw]" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
+                <div class="layout-wrapper section-padding w-full mx-auto">
+                    <h2 class="section-title">Projets.</h2>
+                    <p class="section-subtitle">Sélection d'études de cas détaillées.</p>
+
+                    <div class="projects-grid mt-8">
+
+                        <!-- === CARD 1: SG Markets === -->
+                        <!-- Fixed absolute link to trigger properly on local filesystem -->
+                        <article class="card flex-col flex-between project-card relative cursor-pointer" onclick="window.location.href='./sg-markets.html'" tabindex="0">
+                            <!-- Easter Egg: SG Markets Tooltip -->
+                            <!-- IMPORTANT: Stop click event from bubbling up to the article when interacting with the badge -->
+                            <div class="prompt-badge-wrapper" aria-hidden="true" onclick="event.stopPropagation()">
+                                <button class="prompt-badge" tabindex="0">AI 🪄</button>
+                                <div class="prompt-tooltip">
+                                    <div class="prompt-code">
+                                        <span class="prompt-label">> Prompt Used:</span>
+                                        <p>"Crée une section asymétrique pour présenter mes projets majeurs."</p>
+                                    </div>
+                                    <div class="human-fix">
+                                        <span class="prompt-label">> Human Fix:</span>
+                                        <p>"L'IA avait d'abord généré des sections séparées très lourdes. On a itéré ensemble pour tout regrouper dans cette grille unifiée, plus proche d'une logique de Dashboard."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <!-- Tags -->
+                                <div class="tags-container mb-4">
+                                    <span class="tag">Product Design</span>
+                                    <span class="tag">Écosystème B2B</span>
+                                    <span class="tag">Framework Méthodologique</span>
+                                </div>
+                                <h3 class="card-title">Simplifier la complexité financière</h3>
+                                <p class="card-desc">Mon processus global pour décoder des besoins business denses, concevoir en immersion dans un Design System industriel (CIB) et livrer des spécifications précises aux développeurs.</p>
+                            </div>
+                            <!-- Inner link also needs stopPropagation or just let the article click handle it -->
+                            <a href="./sg-markets.html" class="btn btn-outline mt-6 self-start" onclick="event.stopPropagation()">Découvrir l'étude de cas →</a>
+                        </article>
+
+                        <!-- === CARD 2: ElementaryLand === -->
+                        <article class="card flex-col flex-between project-card relative cursor-pointer" onclick="window.location.href='./elementary-land.html'" tabindex="0">
+                            <div>
+                                <!-- Tags -->
+                                <div class="tags-container mb-4">
+                                    <span class="tag">Projet Associatif</span>
+                                    <span class="tag">Product Ownership</span>
+                                    <span class="tag">Gaming</span>
+                                </div>
+                                <h3 class="card-title">L'aventure ElementaryLand</h3>
+                                <p class="card-desc">Management d'une équipe de 10 personnes, gestion de partenariats (OctoGency) et pilotage d'une communauté de 500+ joueurs. Conception complète de l'écosystème web et optimisation de l'expérience de jeu.</p>
+                            </div>
+                            <a href="./elementary-land.html" class="btn btn-outline mt-6 self-start" onclick="event.stopPropagation()">Découvrir l'étude de cas →</a>
+                        </article>
+
+                        <!-- === CARD 3: SharePoint (Full Width) === -->
+                        <article class="card project-card-full relative">
+                            <!-- Easter Egg: SharePoint Tooltip -->
+                            <div class="prompt-badge-wrapper" style="top: 10px; right: 10px;" aria-hidden="true">
+                                <button class="prompt-badge" tabindex="0">AI 🪄</button>
+                                <div class="prompt-tooltip playground-tooltip">
+                                    <div class="prompt-code">
+                                        <span class="prompt-label">> Prompt Used:</span>
+                                        <p>"Rédige le descriptif pour un projet de migration d'outils internes."</p>
+                                    </div>
+                                    <div class="human-fix">
+                                        <span class="prompt-label">> Human Fix:</span>
+                                        <p>"L'IA voulait survendre le projet avec des buzzwords corporate. J'ai simplifié le pitch pour me concentrer sur la vraie valeur ajoutée de mon alternance : l'architecture de l'information et l'animation d'ateliers."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="tags-container mb-4">
+                                <span class="tag">UX Research</span>
+                                <span class="tag">Architecture d'information</span>
+                                <span class="tag">Autonomie</span>
+                            </div>
+                            <h3 class="card-title">Migration technique & Restructuration</h3>
+                            <p class="card-desc max-w-3xl">Migration technique menée en solo d’un site SharePoint OnPremise vers SharePoint Online. Animation d'ateliers utilisateurs et refonte complète de l'architecture d'information pour simplifier l'accès à la connaissance interne.</p>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 PLAYGROUND SECTION
+                 ========================================================================== -->
+            <section id="playground" class="border-t relative z-10 bg-main w-full m-0 p-0 w-screen max-w-[100vw]" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
+                <div class="layout-wrapper w-full mx-auto relative px-6 px-12-md">
+                    <button class="playground-trigger" aria-expanded="false" aria-controls="playground-content">
+                        <div class="trigger-text-content">
+                            <h2 class="section-title mb-0" style="font-size: 1.5rem; margin-bottom: 0;">Playground.</h2>
+                        </div>
+                        <svg class="chevron-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+
+                    <div id="playground-content" class="playground-content" aria-hidden="true">
+                        <div class="playground-inner-wrapper relative">
+
+                            <!-- Easter Egg: Playground Tooltip -->
+                            <div class="prompt-badge-wrapper" style="top: 0; right: var(--space-6);" aria-hidden="true">
+                                <button class="prompt-badge" tabindex="0">AI 🪄</button>
+                                <div class="prompt-tooltip">
+                                    <div class="prompt-code">
+                                        <span class="prompt-label">> Prompt Used:</span>
+                                        <p>"Crée une section hautement structurée pour l'archivage de mes projets secondaires."</p>
+                                    </div>
+                                    <div class="human-fix">
+                                        <span class="prompt-label">> Human Fix:</span>
+                                        <p>"L'IA voulait créer des sous-pages hyper formelles pour chaque exercice. J'ai préféré casser ce cadre rigide pour en faire un espace libre — un vrai fourre-tout propre — où je partage mes photos, liens et expérimentations de cours sans filtre."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="section-subtitle block mb-4">Un espace d'expérimentations libres.</span>
+                            <p class="max-w-3xl mb-8">Un aperçu de mes projets hebdomadaires à l'IIM, hackathons, rendus 3D sur Blender et délires de code. Un condensé d'exercices pour tester des idées, échouer parfois, et apprendre rapidement à délivrer sous contrainte de temps.</p>
+
+                            <!-- Masonry Grid for side projects -->
+                            <div class="grid-masonry mt-8">
+                                <!-- HOW TO MODIFY: Replace these placeholder cards with <img>, <video>, or custom content -->
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[UI]</span>
+                                </div>
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[3D]</span>
+                                </div>
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[Motion]</span>
+                                </div>
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[Code]</span>
+                                </div>
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[UI]</span>
+                                </div>
+                                <div class="card playground-card flex-center">
+                                    <span class="tag font-mono">[3D]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- ==========================================================================
+             SITE FOOTER
+             ========================================================================== -->
+        <footer id="site-footer" class="border-t flex-col relative z-10 bg-main w-full m-0 p-0 w-screen max-w-[100vw]" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);">
+            <div class="layout-wrapper section-padding w-full mx-auto">
+                <!-- Top Row: Contact & Availability -->
+                <div class="footer-top flex-col md-flex-row md-between md-align-start mb-12">
+                    <div class="footer-content max-w-2xl mb-8 md-mb-0">
+                        <h2 class="text-xl font-bold mb-2">Travaillons ensemble.</h2>
+                        <p class="text-secondary m-0">
+                            Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Discutons de votre prochain défi ou parlons simplement de design !
+                        </p>
+                    </div>
+
+                    <div class="footer-contact">
+                        <a href="mailto:mathieu.elion@gmail.com" class="text-2xl font-bold hover-effect">
+                            mathieu.elion@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Metadata & Links -->
+                <div class="footer-bottom border-t pt-8 flex-col md-flex-row md-between">
+                    <div class="footer-metadata mb-4 md-mb-0">
+                        <span class="font-mono text-muted text-sm">
+                            © 2026 Mathieu Elion — Propulsé par le design, assemblé aux prompts.
+                        </span>
+                    </div>
+
+                    <div class="footer-links flex gap-6">
+                        <a href="https://www.linkedin.com/in/mathieu-elion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://behance.net/mathieuelion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Behance</a>
+                        <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect">Télécharger CV</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- ==========================================================================
+         EASTER EGG CONTROLLER
+         Floating Button (Compact Version)
+         ========================================================================== -->
+    <button id="prompt-mode-toggle" class="floating-btn-compact" aria-label="Toggle Developer Prompt Mode" aria-pressed="false">
+        <span class="icon font-mono font-bold" aria-hidden="true">🪄</span>
+        <span class="btn-tooltip font-mono" aria-live="polite">Behind the Scenes</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="./src/js/main.js" defer></script>
+</body>
+</html>

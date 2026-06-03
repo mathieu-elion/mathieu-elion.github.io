@@ -1,0 +1,108 @@
+/* ==========================================================================
+   DESIGN TOKENS & VARIABLES
+   Centralized configuration for colors, typography, spacing, and layout.
+   HOW TO MODIFY: Change these values to globally update the site's theme.
+   ========================================================================== */
+
+   :root {
+    /* --- 1. Color Palette --- */
+    /* To change the main dark theme, adjust the backgrounds below */
+    --color-bg-main: #0B1116; /* Deep petrol black */
+    --color-bg-card: #111A22; /* Slightly lighter for cards */
+    --color-border: #1F2C37;  /* Thin 1px borders */
+    
+    /* Primary brand color - change this for a new neon/accent theme */
+    --color-accent: #00F5D4;  /* Neon Mint */
+    
+    /* Text Colors */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #A1B0CB; /* Adjusted for WCAG AA compliance - Custom Slate/Grey */
+    --color-text-muted: #A1B0CB;     /* Adjusted for WCAG AA compliance - Custom Slate/Grey */
+
+    /* Header & UI elements */
+    --color-bg-header: rgba(11, 17, 22, 0.75);
+    --color-border-header: rgba(255, 255, 255, 0.05);
+    --color-border-toggle: rgba(255, 255, 255, 0.15);
+    
+    /* --- 2. Typography --- */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    
+    /* --- 3. Spacing (Based on an 8px / 0.5rem scale) --- */
+    --space-1: 0.25rem; /* 4px  */
+    --space-2: 0.5rem;  /* 8px  */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-12: 3rem;   /* 48px */
+    --space-16: 4rem;   /* 64px */
+    --space-24: 6rem;   /* 96px */
+    
+    /* --- 4. Radii --- */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* --- 5. Transitions --- */
+    /* Use these for smooth hardware-accelerated animations */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+    /* --- 6. Z-Index Scale --- */
+    /* Keeps overlapping elements strictly ordered to prevent bugs */
+    --z-background: -1;
+    --z-base: 1;
+    --z-badge: 50;
+    --z-tooltip: 9999;
+    --z-floating: 1000;
+
+    /* Accent color opacities / hover states */
+    --color-accent-hover: rgba(0, 245, 212, 0.4);
+    --color-accent-hover-subtle: rgba(0, 245, 212, 0.3);
+    --color-accent-dots-hover: rgba(0, 245, 212, 0.2);
+    --color-accent-radial: rgba(0, 245, 212, 0.03);
+    
+    /* Background & Border variations */
+    --color-bg-card-alt: #15202B;
+    --color-bg-placeholder: rgba(255, 255, 255, 0.01);
+    --color-bg-tag: rgba(255, 255, 255, 0.03);
+    --color-bg-main-opacity-90: rgba(11, 17, 22, 0.9);
+    
+    /* Shadows & Blueprint grid */
+    --color-shadow-dropdown: rgba(0, 0, 0, 0.5);
+    --color-shadow-highlight: rgba(255, 255, 255, 0.05);
+    --color-border-item: rgba(255, 255, 255, 0.02);
+    --color-blueprint-grid: rgba(0, 245, 212, 0.05);
+  }
+
+
+  body.light-theme {
+    --color-bg-main: #F4F7F9;
+    --color-bg-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-accent: #009688;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748B;
+    --color-bg-header: rgba(244, 247, 249, 0.75);
+    --color-border-header: rgba(15, 23, 42, 0.08);
+    --color-border-toggle: rgba(15, 23, 42, 0.15);
+
+    --color-accent-hover: rgba(0, 150, 136, 0.4);
+    --color-accent-hover-subtle: rgba(0, 150, 136, 0.3);
+    --color-accent-dots-hover: rgba(0, 150, 136, 0.2);
+    --color-accent-radial: rgba(0, 150, 136, 0.03);
+    
+    --color-bg-card-alt: #F8FAFC;
+    --color-bg-placeholder: rgba(0, 0, 0, 0.02);
+    --color-bg-tag: rgba(0, 0, 0, 0.03);
+    --color-bg-main-opacity-90: rgba(244, 247, 249, 0.9);
+    
+    --color-shadow-dropdown: rgba(0, 0, 0, 0.15);
+    --color-shadow-highlight: rgba(15, 23, 42, 0.03);
+    --color-border-item: rgba(15, 23, 42, 0.04);
+    --color-blueprint-grid: rgba(0, 150, 136, 0.05);
+  }
+

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElementaryLand | Mathieu Elion</title>
+    <meta name="description"
+        content="Étude de cas : ElementaryLand - Conception UX et gestion d'un projet de serveur de jeu communautaire.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+
+<body class="bg-main m-0 p-0 overflow-x-hidden w-full">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+    <!-- ==========================================================================
+         SITE HEADER
+         ========================================================================== -->
+    <header id="site-header" class="site-header">
+        <div
+            class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between h-full">
+            <a href="./index.html" class="logo font-mono font-bold text-accent hover-effect">
+                <span class="logo-text">ME.</span><span class="nav-breadcrumb stands-active"> → ElementaryLand.</span>
+            </a>
+            <nav class="nav-navigation relative">
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+                    <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22">
+                    </svg>
+                    <svg class="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="./index.html" class="nav-retour-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span class="nav-retour-text">Retour</span>
+                </a>
+                <button class="nav-menu-toggle" aria-expanded="false" aria-controls="nav-links-menu"
+                    aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-text">Menu</span>
+                    <svg class="menu-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div id="nav-links-menu" class="nav-links-container">
+                    <a href="#projet" class="nav-link">Le Projet</a>
+                    <a href="#problemes" class="nav-link">Problématiques</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="layout-wrapper">
+        <main id="main-content">
+            <!-- ==========================================================================
+                 1. BREADCRUMB & HERO HEADER
+                 ========================================================================== -->
+            <section id="case-study-hero" class="section-padding pb-8">
+                <div class="max-w-3xl">
+                    <!-- Breadcrumb -->
+                    <div class="font-mono text-muted mb-6 text-sm">
+                        <a href="./index.html" class="hover-effect">Projets</a> / <span
+                            class="text-primary">ElementaryLand</span>
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="hero-title">ElementaryLand : Conception UX et gestion d'un projet de serveur de jeu
+                        communautaire.</h1>
+                </div>
+
+                <!-- Metadata Row -->
+                <div class="metadata-grid grid-4-cols mt-12 border-t pt-8">
+                    <!-- Col 1 -->
+                    <div class="metadata-col">
+                        <span class="font-mono text-muted text-sm block mb-2">Rôle</span>
+                        <p class="font-bold text-accent m-0">Créateur, Administrateur &amp; Designer UI/UX (Projet
+                            passion)</p>
+                    </div>
+                    <!-- Col 2 -->
+                    <div class="metadata-col border-l-md pl-md-6">
+                        <span class="font-mono text-muted text-sm block mb-2">Contexte</span>
+                        <p class="font-bold text-primary m-0">Serveur Minecraft associatif (Actif depuis mars 2019)</p>
+                    </div>
+                    <!-- Col 3 -->
+                    <div class="metadata-col border-l-md pl-md-6">
+                        <span class="font-mono text-muted text-sm block mb-2">L'équipe</span>
+                        <p class="font-bold text-primary m-0">Collectif d'une dizaine d'amis bénévoles (Développeurs,
+                            Builders, Modérateurs)</p>
+                    </div>
+                    <!-- Col 4 -->
+                    <div class="metadata-col border-l-md pl-md-6">
+                        <span class="font-mono text-muted text-sm block mb-2">L'écosystème</span>
+                        <p class="font-bold text-primary m-0">Serveur de jeu, plateforme web, communauté Discord (500+
+                            membres)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 2. LE PROJET & LE DÉFI DE LA RÉTENTION
+                 ========================================================================== -->
+            <section id="projet" class="section-padding border-t">
+                <div class="context-grid">
+                    <!-- Left Column -->
+                    <div class="context-text">
+                        <h2 class="text-xl mb-4">ElementaryLand, c'est quoi ?</h2>
+                        <p class="mb-6">
+                            ElementaryLand est né d'une ambition simple entre amis : concevoir un parc d'attractions
+                            virtuel entièrement personnalisé et immersif au sein du jeu Minecraft. Structuré autour de
+                            plusieurs quartiers thématiques basés sur les éléments (l'Eau, le Feu, la Vie, le Céleste),
+                            le projet propose une expérience complexe combinant des architectures monumentales, des
+                            montagnes russes mécanisées, des spectacles et des mini-jeux. Pour soutenir cette vision,
+                            l'écosystème s'appuie sur des technologies avancées comme l'intégration de Resource Packs,
+                            permettant de modifier l'interface (UI) native du jeu et d'injecter des modèles 3D
+                            exclusifs.
+                        </p>
+                        <p class="mb-0">
+                            Au-delà de la performance technique et créative, le véritable défi de ce projet réside dans
+                            la gestion de la rétention et de l'engagement sur le long terme.
+                        </p>
+                    </div>
+                    <!-- Right Column (Visual Placeholder) -->
+                    <div class="context-visual">
+                        <div class="placeholder-box flex-col flex-center image-container-16-9"
+                            style="min-height: auto; aspect-ratio: 16/9; margin-bottom: 0;">
+                            <span class="image-container-label font-mono">
+                                [PARC ELEMENTARYLAND : LE PROJET]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 3. LES DONNÉES D'USAGE : CARTOGRAPHIE DES PROBLÉMATIQUES
+                 ========================================================================== -->
+            <section id="problemes" class="section-padding border-t">
+                <div class="max-w-3xl mb-12">
+                    <h2 class="section-title">Les différents défis.</h2>
+                    <p class="section-subtitle">
+                        Pour orienter l'évolution du serveur, l'analyse des données du back-office a remplacé
+                        l'intuition. Avec environ <strong class="text-accent"><span class="font-mono">3050</span>
+                            comptes enregistrés</strong> et un temps de jeu moyen de<strong class="text-accent"> <span
+                                class="font-mono">27h</span></strong>, les
+                        métriques ont permis d'isoler <strong class="text-accent">trois grands défis</strong> de
+                        conception.
+                    </p>
+                </div>
+
+                <div class="problems-grid mt-8">
+                    <!-- Card 1 -->
+                    <article class="problem-card">
+                        <div class="problem-card-header">
+                            <span class="problem-category font-mono">DÉFI 01</span>
+                            <h3 class="problem-title">
+                                <svg class="defi-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                <span>L'abandon précoce.</span>
+                            </h3>
+                        </div>
+                        <div class="problem-metric-block">
+                            <span class="problem-metric">122</span>
+                            <span class="problem-metric-label font-mono">nouveaux joueurs avec &lt;1h de jeu</span>
+                        </div>
+                        <p class="problem-diagnostic text-sm">
+                            <strong>Diagnostic UX :</strong> Friction majeure et charge cognitive trop élevée lors de
+                            l'accueil initial, décourageant les novices.
+                        </p>
+                        <div class="problem-footer">
+                            <a href="#onboarding-solution" class="problem-action-link">→ Refonte de l'Onboarding</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="problem-card">
+                        <div class="problem-card-header">
+                            <span class="problem-category font-mono">DÉFI 02</span>
+                            <h3 class="problem-title">
+                                <svg class="defi-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                                </svg>
+                                <span>La fidélisation sur le long terme.</span>
+                            </h3>
+                        </div>
+                        <div class="problem-metric-block">
+                            <span class="problem-metric">9 ans</span>
+                            <span class="problem-metric-label font-mono">de jeu cumulé (top joueurs de 69h à
+                                390h)</span>
+                        </div>
+                        <p class="problem-diagnostic text-sm">
+                            <strong>Diagnostic UX :</strong> Nécessité de structurer une économie long terme saine
+                            (coins) et un vaste catalogue visuel (36 attractions, 81 items) pour éviter la lassitude.
+                        </p>
+                        <div class="problem-footer">
+                            <a href="#economy-solution" class="problem-action-link">→ Ingénierie Économique &amp; UI</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="problem-card">
+                        <div class="problem-card-header">
+                            <span class="problem-category font-mono">DÉFI 03</span>
+                            <h3 class="problem-title">
+                                <svg class="defi-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                                <span>L'évolution de la structure.</span>
+                            </h3>
+                        </div>
+                        <div class="problem-metric-block">
+                            <span class="problem-metric">4</span>
+                            <span class="problem-metric-label font-mono">langues (FR, EN, DE, NL)</span>
+                        </div>
+                        <p class="problem-diagnostic text-sm">
+                            <strong>Diagnostic UX :</strong> Passer d'une gestion artisanale à une roadmap claire et une
+                            infrastructure robuste pour piloter les refontes sans diviser l'équipe.
+                        </p>
+                        <div class="problem-footer">
+                            <a href="#management-solution" class="problem-action-link">→ Organisation Collective &amp;
+                                Refonte</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 4. PLACEHOLDER SOLUTION SECTIONS (FOR SMOOTH ANCHOR SCROLLING)
+                 ========================================================================== -->
+            <section id="onboarding-solution" class="section-padding border-t">
+                <button class="onboarding-trigger" aria-expanded="false" aria-controls="onboarding-content">
+                    <div class="onboarding-trigger-text">
+                        <span class="section-category font-mono text-accent block mb-2 flex items-center gap-2">
+                            <svg class="section-defi-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                            </svg>
+                            L'ABANDON PRÉCOCE,
+                        </span>
+                        <h2 class="section-title onboarding-title mb-0">un onboarding interactif.</h2>
+                    </div>
+                    <svg class="chevron-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <div id="onboarding-content" class="onboarding-content" aria-hidden="true">
+                    <div class="onboarding-inner-wrapper pt-8">
+                        <div class="context-grid">
+                            <!-- Left Column (Content & Interactive Accordion) -->
+                            <div class="context-text">
+                                <p class="mb-6">
+                                    Pour réduire l'abandon des <strong class="text-accent"><span
+                                            class="font-mono">122</span> nouveaux joueurs</strong>, l'accueil du serveur
+                                    a été
+                                    entièrement repensé. Le but était de simplifier l'arrivée des novices sans casser
+                                    l'univers du jeu.
+                                </p>
+                                <p class="mb-6">
+                                    Au lieu d'afficher un gros pavé de texte à la connexion, nous avons créé un système
+                                    d'accueil intégré directement dans le chat, basé sur un apprentissage pas-à-pas.
+                                    L'explication du fonctionnement du serveur est découpée en <strong
+                                        class="text-accent">trois guides courts</strong>, qui
+                                    se lancent l'un après l'autre :
+                                </p>
+
+                                <!-- Monospace Interactive Accordion -->
+                                <div class="guide-accordion mb-6">
+                                    <div class="guide-row">
+                                        <button class="guide-trigger font-mono is-expanded" aria-expanded="true"
+                                            aria-controls="guide-content-economy">
+                                            <span class="guide-trigger-title">* L'économie :</span>
+                                            <svg class="guide-chevron" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <div id="guide-content-economy" class="guide-content is-expanded"
+                                            aria-hidden="false">
+                                            <div class="guide-inner text-secondary text-sm font-mono">
+                                                comprendre comment gagner et utiliser les pièces de monnaie (coins).
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <button class="guide-trigger font-mono" aria-expanded="false"
+                                            aria-controls="guide-content-navigation">
+                                            <span class="guide-trigger-title">* La navigation :</span>
+                                            <svg class="guide-chevron" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <div id="guide-content-navigation" class="guide-content" aria-hidden="true">
+                                            <div class="guide-inner text-secondary text-sm font-mono">
+                                                apprendre à utiliser le menu GPS, les interactions au clic droit et le
+                                                système de téléportation.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guide-row">
+                                        <button class="guide-trigger font-mono" aria-expanded="false"
+                                            aria-controls="guide-content-progression">
+                                            <span class="guide-trigger-title">* La progression :</span>
+                                            <svg class="guide-chevron" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2.5"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <div id="guide-content-progression" class="guide-content" aria-hidden="true">
+                                            <div class="guide-inner text-secondary text-sm font-mono">
+                                                découvrir les quêtes, les défis (achievements) et les boutiques de
+                                                cosmétiques (shops).
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="mb-0">
+                                    Chaque guide commence par un titre net au centre de l'écran pour indiquer la
+                                    progression. Cela transforme une phase d'apprentissage complexe en un parcours
+                                    simple et guidé.
+                                </p>
+                            </div>
+
+                            <!-- Right Column (Visual Logigramme) -->
+                            <div class="context-visual flex flex-col justify-center">
+                                <div class="placeholder-box flex-col flex-center image-container-16-9"
+                                    style="min-height: auto; aspect-ratio: 16/9; margin-bottom: 0;">
+                                    <span class="image-container-label font-mono">
+                                        [ figure 01 : logigramme du parcours d'onboarding et des étapes d'apprentissage
+                                        interactives ]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="economy-solution" class="section-padding border-t">
+                <button class="economy-trigger" aria-expanded="false" aria-controls="economy-content">
+                    <div class="onboarding-trigger-text">
+                        <span class="section-category font-mono text-accent block mb-2 flex items-center gap-2">
+                            <svg class="section-defi-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                            </svg>
+                            LA FIDÉLISATION,
+                        </span>
+                        <h2 class="section-title onboarding-title mb-0">l'équilibrage de la rétention : économie et
+                            design d'interfaces.</h2>
+                    </div>
+                    <svg class="chevron-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <div id="economy-content" class="economy-content" aria-hidden="true">
+                    <div class="onboarding-inner-wrapper pt-8">
+                        <div class="context-grid">
+                            <!-- Left Column (Content & Interactive Tabs) -->
+                            <div class="context-text">
+                                <p class="mb-6">
+                                    Pour maintenir l'intérêt des joueurs réguliers (qui cumulent <strong
+                                        class="text-accent">entre <span class="font-mono">69h</span> et <span
+                                            class="font-mono">390h</span> de jeu</strong>), nous avons structuré une
+                                    économie interne basée sur le temps passé. La monnaie du serveur (les coins) est
+                                    générée automatiquement à hauteur de <strong class="text-accent"><span
+                                            class="font-mono">1</span> pièce par minute</strong> pour les joueurs
+                                    standards, et 2 pièces pour les VIP. Les utilisateurs peuvent aussi en gagner en
+                                    complétant les <strong class="text-accent"><span class="font-mono">36</span>
+                                        attractions</strong>, des mini-jeux ou des quêtes.
+                                </p>
+                                <p class="mb-6">
+                                    La gestion des flux de monnaie a été pensée pour inciter à l'action. Par exemple,
+                                    utiliser la téléportation coûte 2 pièces, ce qui pousse naturellement les
+                                    joueurs à explorer le parc à pied pour économiser leurs gains. La monnaie accumulée
+                                    est ensuite dépensée dans des boutiques (shops) proposant des objets purement
+                                    cosmétiques, des costumes et des chapeaux exclusifs (comme le chapeau tortue).
+                                </p>
+
+                                <!-- Monospace Interactive Tabs -->
+                                <div class="economy-tabs mb-0">
+                                    <div class="tabs-header font-mono">
+                                        <button class="tab-btn active" data-tab="economy-flow">> flux_monétaire</button>
+                                        <button class="tab-btn" data-tab="economy-shops">> catalogue_shops</button>
+                                        <button class="tab-btn" data-tab="economy-ui">> interfaces_ui</button>
+                                    </div>
+                                    <div class="tabs-content-box font-mono text-sm mt-4">
+                                        <div id="economy-flow" class="tab-panel active">
+                                            <span class="text-accent block mb-2">// Flux de gains &amp; coûts :</span>
+                                            * Joueur standard : +1 coin / minute<br>
+                                            * Joueur VIP : +2 coins / minute<br>
+                                            * Téléportation : -2 coins (exploration au sol)<br>
+                                            * Bonus quêtes : variable selon l'attraction
+                                        </div>
+                                        <div id="economy-shops" class="tab-panel">
+                                            <span class="text-accent block mb-2">// Catalogue des boutiques :</span>
+                                            * 36 attractions à explorer pour acheter<br>
+                                            * Customisation cosmétique (aucun pay-to-win)<br>
+                                            * Costumes &amp; chapeaux exclusifs (ex. Chapeau tortue)<br>
+                                            * Objets uniques échangeables entre joueurs
+                                        </div>
+                                        <div id="economy-ui" class="tab-panel">
+                                            <span class="text-accent block mb-2">// Habillage visuel &amp; UI :</span>
+                                            * 81 items personnalisés (modèles 3D injectés)<br>
+                                            * Resource pack synchronisé à la connexion<br>
+                                            * Interfaces de navigation sur-mesure (sans HUD natif)<br>
+                                            * Cohérence narrative et micro-copy immersive
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column (Visual Layout Showcase) -->
+                            <div class="context-visual flex flex-col justify-center">
+                                <div class="placeholder-box flex-col flex-center image-container-16-9"
+                                    style="min-height: auto; aspect-ratio: 16/9; margin-bottom: 0;">
+                                    <span class="image-container-label font-mono">
+                                        [ figure 02 : aperçu des menus d'interfaces personnalisés et des modèles
+                                        d'objets 3D créés pour le serveur ]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="management-solution" class="section-padding border-t">
+                <button class="management-trigger" aria-expanded="false" aria-controls="management-content">
+                    <div class="onboarding-trigger-text">
+                        <span class="section-category font-mono text-accent block mb-2 flex items-center gap-2">
+                            <svg class="section-defi-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            L'ÉVOLUTION DE LA STRUCTURE,
+                        </span>
+                        <h2 class="section-title onboarding-title mb-0">l'organisation collective et la refonte
+                            technique.</h2>
+                    </div>
+                    <svg class="chevron-icon" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <div id="management-content" class="management-content" aria-hidden="true">
+                    <div class="onboarding-inner-wrapper pt-8">
+                        <div class="context-grid">
+                            <!-- Left Column (Content & Milestones Accordion) -->
+                            <div class="context-text">
+                                <p class="mb-6">
+                                    Pour piloter ce projet sur le long terme, la clarté et l'organisation ont été
+                                    indispensables. Sans aucun lien hiérarchique, coordonner un groupe d'<strong
+                                        class="text-accent">une dizaine d'amis bénévoles</strong> aux compétences
+                                    variées (développeurs pour les plugins, builders pour l'architecture des blocs,
+                                    modérateurs) repose entièrement sur la motivation commune et un suivi rigoureux des
+                                    tâches.
+                                </p>
+                                <p class="mb-6">
+                                    Nous avons structuré les lancements et les grands chantiers par étapes. Le projet le
+                                    plus important a été la refonte complète de l'infrastructure technique du serveur,
+                                    couplée à la réécriture totale du site internet. Cette réorganisation a permis de
+                                    moderniser l'écosystème global de bout en bout et d'optimiser la stabilité du
+                                    service, tout en maintenant la cohésion de l'équipe.
+                                </p>
+
+                                <!-- Monospace Interactive Milestones Accordion -->
+                                <div class="milestone-accordion mb-0">
+                                    <div class="milestone-row">
+                                        <button class="milestone-trigger font-mono is-expanded" aria-expanded="true"
+                                            aria-controls="milestone-content-phase1">
+                                            <span class="milestone-trigger-title">* phase_01 : audit &amp;
+                                                infrastructure</span>
+                                            <div class="flex items-center gap-4">
+                                                <span class="milestone-status text-accent">[terminé]</span>
+                                                <svg class="milestone-chevron" width="12" height="12"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </div>
+                                        </button>
+                                        <div id="milestone-content-phase1" class="milestone-content is-expanded"
+                                            aria-hidden="false">
+                                            <div class="milestone-inner text-secondary text-sm font-mono mt-2 pl-4">
+                                                - migration vers un hébergement dédié<br>
+                                                - refonte de la base de données SQL<br>
+                                                - optimisation de la stabilité du serveur
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-row">
+                                        <button class="milestone-trigger font-mono" aria-expanded="false"
+                                            aria-controls="milestone-content-phase2">
+                                            <span class="milestone-trigger-title">* phase_02 : code &amp; plugins</span>
+                                            <div class="flex items-center gap-4">
+                                                <span class="milestone-status text-accent">[terminé]</span>
+                                                <svg class="milestone-chevron" width="12" height="12"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </div>
+                                        </button>
+                                        <div id="milestone-content-phase2" class="milestone-content" aria-hidden="true">
+                                            <div class="milestone-inner text-secondary text-sm font-mono mt-2 pl-4">
+                                                - nettoyage du code hérité (legacy)<br>
+                                                - développement d'APIs internes dédiées<br>
+                                                - implémentation de l'internationalisation
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="milestone-row">
+                                        <button class="milestone-trigger font-mono" aria-expanded="false"
+                                            aria-controls="milestone-content-phase3">
+                                            <span class="milestone-trigger-title">* phase_03 : site web &amp;
+                                                communauté</span>
+                                            <div class="flex items-center gap-4">
+                                                <span class="milestone-status text-accent">[en cours]</span>
+                                                <svg class="milestone-chevron" width="12" height="12"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </div>
+                                        </button>
+                                        <div id="milestone-content-phase3" class="milestone-content" aria-hidden="true">
+                                            <div class="milestone-inner text-secondary text-sm font-mono mt-2 pl-4">
+                                                - refonte complète du site internet<br>
+                                                - automatisation de l'onboarding en ligne<br>
+                                                - ouverture progressive de la bêta
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column (Visual Layout Showcase) -->
+                            <div class="context-visual flex flex-col justify-center">
+                                <div class="placeholder-box flex-col flex-center image-container-16-9"
+                                    style="min-height: auto; aspect-ratio: 16/9; margin-bottom: 0;">
+                                    <span class="image-container-label font-mono">
+                                        [ figure 03 : calendrier de suivi et planification de la refonte technique
+                                        globale ]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ==========================================================================
+             SITE FOOTER
+             ========================================================================== -->
+        <footer id="site-footer" class="section-padding border-t flex-col">
+            <!-- Top Row: Contact & Availability -->
+            <div class="footer-top flex-col md-flex-row md-between md-align-start mb-12">
+                <div class="footer-content max-w-2xl mb-8 md-mb-0">
+                    <h2 class="text-xl font-bold mb-2">Travaillons ensemble.</h2>
+                    <p class="text-secondary m-0">
+                        Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Discutons de
+                        votre prochain défi ou parlons simplement de design !
+                    </p>
+                </div>
+
+                <div class="footer-contact">
+                    <a href="mailto:mathieu.elion@gmail.com" class="text-2xl font-bold hover-effect">
+                        mathieu.elion@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Metadata & Links -->
+            <div class="footer-bottom border-t pt-8 flex-col md-flex-row md-between">
+                <div class="footer-metadata mb-4 md-mb-0">
+                    <span class="font-mono text-muted text-sm">
+                        © 2026 Mathieu Elion — Propulsé par le design, assemblé aux prompts.
+                    </span>
+                </div>
+
+                <div class="footer-links flex gap-6">
+                    <a href="https://www.linkedin.com/in/mathieu-elion"
+                        class="font-mono text-muted text-sm hover-effect" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://behance.net/mathieuelion" class="font-mono text-muted text-sm hover-effect"
+                        target="_blank" rel="noopener noreferrer">Behance</a>
+                    <a href="./assets/cv-mathieu-elion.pdf"
+                        class="font-mono text-muted text-sm hover-effect">Télécharger CV</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ==========================================================================
+         EASTER EGG CONTROLLER
+         Floating Button (Compact Version)
+         ========================================================================== -->
+    <button id="prompt-mode-toggle" class="floating-btn-compact" aria-label="Toggle Developer Prompt Mode"
+        aria-pressed="false">
+        <span class="icon font-mono font-bold" aria-hidden="true">🪄</span>
+        <span class="btn-tooltip font-mono" aria-live="polite">Behind the Scenes</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="./src/js/main.js" defer></script>
+</body>
+
+</html>

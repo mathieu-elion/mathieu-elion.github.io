@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG Markets | Mathieu Elion</title>
+    <meta name="description" content="Étude de cas : SG Markets - Designer au sein d'un écosystème financier B2B.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body class="bg-main m-0 p-0 overflow-x-hidden w-full">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+    <!-- ==========================================================================
+         SITE HEADER
+         ========================================================================== -->
+    <header id="site-header" class="site-header">
+        <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between h-full">
+            <a href="./index.html" class="logo font-mono font-bold text-accent hover-effect"><span class="logo-text">ME.</span><span class="nav-breadcrumb"></span></a>
+            <nav class="nav-navigation relative">
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+                    <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a href="./index.html" class="nav-retour-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <span class="nav-retour-text">Retour</span>
+                </a>
+                <button class="nav-menu-toggle" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-text">Menu</span>
+                    <svg class="menu-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div id="nav-links-menu" class="nav-links-container">
+                    <a href="#context" class="nav-link">Contexte</a>
+                    <a href="#interventions" class="nav-link">Interventions</a>
+                    <a href="#process" class="nav-link">Démarche</a>
+                    <a href="#conclusion" class="nav-link">Enseignements</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="layout-wrapper">
+
+        <main id="main-content">
+
+            <!-- ==========================================================================
+                 1. BREADCRUMB & HERO HEADER
+                 ========================================================================== -->
+            <section id="case-study-hero" class="section-padding pb-8">
+                <div class="max-w-3xl">
+                    <!-- Breadcrumb -->
+                    <div class="font-mono text-muted mb-6 text-sm">
+                        <a href="./index.html" class="hover-effect">Projets</a> / <span class="text-primary">SG Markets</span>
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="hero-title">SG Markets : Designer au sein d'un écosystème financier B2B.</h1>
+                </div>
+
+                <!-- Metadata Row -->
+                <div class="metadata-grid mt-12 border-t pt-8">
+                    <!-- Col 1 -->
+                    <div class="metadata-col">
+                        <span class="font-mono text-muted text-sm block mb-2">Mon rôle</span>
+                        <p class="font-bold text-accent m-0">Product Designer (Alternance)</p>
+                    </div>
+                    <!-- Col 2 -->
+                    <div class="metadata-col border-l-md pl-md-6">
+                        <span class="font-mono text-muted text-sm block mb-2">Durée</span>
+                        <p class="font-bold text-primary m-0">1 an (2025 — 2026)</p>
+                    </div>
+                    <!-- Col 3 -->
+                    <div class="metadata-col border-l-md pl-md-6">
+                        <span class="font-mono text-muted text-sm block mb-2">Le défi</span>
+                        <p class="text-secondary m-0 text-sm">Concevoir pour une plateforme bancaire complexe où la clarté de l'information est primordiale.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 2. PRESENTATION & CONTEXT
+                 ========================================================================== -->
+            <section id="context" class="section-padding border-t">
+                <div class="context-grid">
+
+                    <!-- Left Column (Text Content) -->
+                    <div class="context-text">
+                        <h2 class="text-xl mb-4">SG Markets, c'est quoi ?</h2>
+                        <p class="mb-8">
+                            SG Markets est la plateforme de services en ligne de Société Générale dédiée aux clients entreprises et institutionnels (B2B). Cet écosystème centralise les outils de la banque de grande clientèle et d'investissement (CIB), couvrant des besoins variés comme le trading, le financement, la gestion de données et l'analyse de marchés.
+                        </p>
+
+                        <h2 class="text-xl mb-4">Une approche globale et multi-services.</h2>
+                        <p class="mb-0">
+                            J'ai été amené à travailler sur une multitude de sites et de services au sein de la galaxie SG Markets. J'ai navigué d'un sujet à un autre selon les besoins des équipes et des utilisateurs, ce qui m'a donné une vision d'ensemble de la plateforme.
+                        </p>
+                    </div>
+
+                    <!-- Right Column (Visual Placeholder) -->
+                    <div class="context-visual">
+                        <div class="placeholder-box flex-col flex-center image-container-16-9" style="min-height: auto; aspect-ratio: 16/9; margin-bottom: 0;">
+                            <span class="image-container-label font-mono">
+                                [Placeholder: Écosystème Visuel Global / Constellation de services]
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 3. MES TYPES D'INTERVENTIONS (4-Card Grid)
+                 ========================================================================== -->
+            <section id="interventions" class="section-padding border-t">
+                <h2 class="section-title">Mes types d'interventions.</h2>
+
+                <div class="interventions-grid mt-8">
+                    <!-- Card 1 -->
+                    <article class="intervention-card">
+                        <span class="tag font-mono mb-4 block w-fit">DESIGN-LED</span>
+                        <h3 class="text-xl mb-3">Conception complète</h3>
+                        <p class="mb-0 text-sm">Prendre en main la conception complète d'un service, de la phase de recherche jusqu'aux maquettes finales.</p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="intervention-card">
+                        <span class="tag font-mono mb-4 block w-fit">WORKSHOPS</span>
+                        <h3 class="text-xl mb-3">Co-conception</h3>
+                        <p class="mb-0 text-sm">Animer des sessions de travail avec une partie de l'équipe produit (product owner, business, développeurs...) pour identifier les parcours utilisateur parfois complexes.</p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="intervention-card">
+                        <span class="tag font-mono mb-4 block w-fit">EVOLUTION REQUESTS</span>
+                        <h3 class="text-xl mb-3">Amélioration continue</h3>
+                        <p class="mb-0 text-sm">Prendre les retours des équipes produits et mettre à jour les services déjà en production de manière continue.</p>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="intervention-card">
+                        <span class="tag font-mono mb-4 block w-fit">UI REVIEW</span>
+                        <h3 class="text-xl mb-3">Contrôle qualité</h3>
+                        <p class="mb-0 text-sm">Analyser les services développés pour vérifier l'application des règles graphiques et ergonomiques mises en place, notamment à travers le Design System.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 4. MA DÉMARCHE DE CONCEPTION
+                 ========================================================================== -->
+            <section id="process" class="section-padding border-t">
+                <div class="max-w-3xl mb-12">
+                    <h2 class="section-title">Ma démarche de conception au quotidien.</h2>
+                    <p class="section-subtitle">Pour structurer mes interventions sur l'écosystème, j'articule mon travail autour de 6 grandes étapes adaptées aux contraintes de la tech et du produit.</p>
+                </div>
+
+                <ol class="process-list">
+                    <!-- Step 1 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">01. Exploration et Cadrage</h3>
+                        <p class="process-desc">Chaque projet débute par une phase d'immersion. J'analyse les besoins formulés par les équipes pour comprendre le contexte technique et aligner les attentes avant de concevoir.</p>
+                    </li>
+
+                    <!-- Step 2 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">02. Logique et Architecture de l'information</h3>
+                        <p class="process-desc">Je matérialise la structure de la fonctionnalité en cartographiant les flux utilisateurs (user flows). Cette étape essentielle permet de simplifier la navigation au sein d'interfaces denses.</p>
+                    </li>
+
+                    <!-- Step 3 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">03. Design d'interface et Prototypage</h3>
+                        <p class="process-desc">Je traduis les parcours en wireframes, puis je développe des maquettes interactives haute fidélité. Pour cela, j'exploite et j'alimente les composants du Design System global.</p>
+                    </li>
+
+                    <!-- Step 4 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">04. Évaluation et Validation terrain</h3>
+                        <p class="process-desc">Je confronte les prototypes à la reality du terrain en menant des tests utilisateurs. Les retours des experts métiers me permettent d'itérer rapidement pour corriger les points de friction.</p>
+                    </li>
+
+                    <!-- Step 5 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">05. Indicateurs de réussite</h3>
+                        <p class="process-desc">La conception se prolonge après la livraison. Je définis des métriques d'adoption précises pour suivre l'utilisation de la fonctionnalité et valider son efficacité réelle.</p>
+                    </li>
+
+                    <!-- Step 6 -->
+                    <li class="process-row">
+                        <h3 class="process-title font-mono">06. Suivi post-développement et Évolutions</h3>
+                        <p class="process-desc">Le projet continue de vivre après sa mise en ligne. J'assure un suivi continu en restant à la disposition du Product Owner pour concevoir les évolutions et ajuster l'interface dès qu'un nouveau besoin est remonté.</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ==========================================================================
+                 5. CLASSIC UX POSTURE SECTION (Image Grid)
+                 ========================================================================== -->
+            <section id="ux-focus" class="section-padding border-t">
+                <div class="max-w-3xl mb-12">
+                    <h2 class="section-title">Ma posture UX face à la complexité.</h2>
+                    <p class="section-subtitle">Travailler sur un écosystème comme SG Markets demande des compétences UX spécifiques pour transformer des logiques métiers denses en interfaces fluides.</p>
+                </div>
+
+                <div class="image-grid grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+
+                    <!-- Block 1 -->
+                    <article class="flex-col w-full">
+                        <div class="placeholder-box flex-col flex-center image-container-16-9" style="min-height: auto; aspect-ratio: 16/9; margin-bottom: var(--space-4);">
+                            <span class="image-container-label font-mono">
+                                [Visuel : Schéma de cadrage ou flux de cartographie métier]
+                            </span>
+                        </div>
+                        <p class="text-secondary m-0">
+                            <strong class="text-primary font-bold block mb-2">S'adapter au jargon technique.</strong>
+                            On ne naît pas expert en finance. Mon rôle consiste à poser les bonnes questions aux Product Owners pour traduire leurs besoins techniques en parcours fluides.
+                        </p>
+                    </article>
+
+                    <!-- Block 2 -->
+                    <article class="flex-col w-full">
+                        <div class="placeholder-box flex-col flex-center image-container-16-9" style="min-height: auto; aspect-ratio: 16/9; margin-bottom: var(--space-4);">
+                            <span class="image-container-label font-mono">
+                                [Visuel : Capture d'interface dense floutée ou en mode wireframe blueprint]
+                            </span>
+                        </div>
+                        <p class="text-secondary m-0">
+                            <strong class="text-primary font-bold block mb-2">Hiérarchiser les masses d'informations.</strong>
+                            Les interfaces financières manipulent d'importants volumes d'informations (tableaux denses, graphiques, formulaires). Je me concentre sur l'architecture de l'information pour hiérarchiser les éléments visuels, optimiser la lisibilité et faciliter les prises de décision rapides des utilisateurs, sans jamais masquer les données cruciales.
+                        </p>
+                    </article>
+
+                    <!-- Block 3 -->
+                    <article class="flex-col w-full">
+                        <div class="placeholder-box flex-col flex-center image-container-16-9" style="min-height: auto; aspect-ratio: 16/9; margin-bottom: var(--space-4);">
+                            <span class="image-container-label font-mono">
+                                [Visuel : Graphique de synthèse de retours de tests ou timeline de session d'évaluation]
+                            </span>
+                        </div>
+                        <p class="text-secondary m-0">
+                            <strong class="text-primary font-bold block mb-2">Conduire des tests ciblés.</strong>
+                            Les professionnels de la banque ont des plannings très serrés. J'ai appris à structurer des sessions d'évaluation courtes et percutantes pour récolter des retours précis en un minimum de temps.
+                        </p>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ==========================================================================
+                 6. CONCLUSION & ENSEIGNEMENTS
+                 ========================================================================== -->
+            <section id="conclusion" class="section-padding border-t">
+                <div class="max-w-3xl">
+                    <h2 class="section-title">Mes enseignements.</h2>
+                    <p class="text-secondary m-0">
+                        Ce passage d'un an au sein de l'écosystème SG Markets a profondément enrichi ma posture de Product Designer. Travailler sur des services aussi denses et variés m'a permis de développer une grande agilité méthodologique et une forte capacité d'adaptation. J'ai appris à absorber rapidement des logiques métiers complexes pour les traduire en interfaces simples, claires et structurées. Cette expérience confirme ma capacité à collaborer efficacement avec des équipes pluridisciplinaires (Product Owners, développeurs) et à concevoir des solutions adaptées à des utilisateurs experts, où chaque choix ergonomique a un impact direct sur leur efficacité au quotidien.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ==========================================================================
+             SITE FOOTER
+             ========================================================================== -->
+        <footer id="site-footer" class="section-padding border-t flex-col">
+            <!-- Top Row: Contact & Availability -->
+            <div class="footer-top flex-col md-flex-row md-between md-align-start mb-12">
+                <div class="footer-content max-w-2xl mb-8 md-mb-0">
+                    <h2 class="text-xl font-bold mb-2">Travaillons ensemble.</h2>
+                    <p class="text-secondary m-0">
+                        Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Discutons de votre prochain défi ou parlons simplement de design !
+                    </p>
+                </div>
+
+                <div class="footer-contact">
+                    <a href="mailto:mathieu.elion@gmail.com" class="text-2xl font-bold hover-effect">
+                        mathieu.elion@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Metadata & Links -->
+            <div class="footer-bottom border-t pt-8 flex-col md-flex-row md-between">
+                <div class="footer-metadata mb-4 md-mb-0">
+                    <span class="font-mono text-muted text-sm">
+                        © 2026 Mathieu Elion — Propulsé par le design, assemblé aux prompts.
+                    </span>
+                </div>
+
+                <div class="footer-links flex gap-6">
+                    <a href="https://www.linkedin.com/in/mathieu-elion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://behance.net/mathieuelion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Behance</a>
+                    <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect">Télécharger CV</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ==========================================================================
+         EASTER EGG CONTROLLER
+         Floating Button (Compact Version)
+         ========================================================================== -->
+    <button id="prompt-mode-toggle" class="floating-btn-compact" aria-label="Toggle Developer Prompt Mode" aria-pressed="false">
+        <span class="icon font-mono font-bold" aria-hidden="true">🪄</span>
+        <span class="btn-tooltip font-mono" aria-live="polite">Behind the Scenes</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="./src/js/main.js" defer></script>
+</body>
+</html>
