@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Mathieu Elion Portfolio initialized.');
     initPromptMode();
     initHeroCanvas();
+    initProjectChatbot();
 
     // Dismiss tooltips on scroll to prevent them from persisting and overlapping layout sections (only on mobile)
     window.addEventListener('scroll', () => {
@@ -245,7 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbarClickAnimation();
     initMobileMenu();
     initTheme();
+    initWipFeatures();
 });
+
 
 /**
  * ============================================================================
@@ -758,5 +761,314 @@ function initTheme() {
         const isCurrentlyLight = document.body.classList.contains('light-theme');
         btn.setAttribute('aria-pressed', isCurrentlyLight ? 'true' : 'false');
     });
+}
+
+/**
+ * Helper for typing effect in chatbot
+ */
+function typeWriterHTML(element, htmlString, speed = 10, callback = null) {
+    element.innerHTML = '';
+    let i = 0;
+    let currentHTML = '';
+    let inTag = false;
+
+    function type() {
+        if (i < htmlString.length) {
+            let char = htmlString.charAt(i);
+            currentHTML += char;
+            
+            if (char === '<') inTag = true;
+            if (char === '>') inTag = false;
+
+            i++;
+
+            if (inTag) {
+                type(); // Skip delay for HTML tags
+            } else {
+                element.innerHTML = currentHTML;
+                if (element.parentElement) {
+                    element.parentElement.scrollTop = element.parentElement.scrollHeight;
+                }
+                setTimeout(type, speed);
+            }
+        } else if (callback) {
+            callback();
+        }
+    }
+    type();
+}
+
+/**
+ * ============================================================================
+ * PROJECT CHATBOT LOGIC
+ * ============================================================================
+ * Handles the modular chat drawer on case study pages.
+ */
+const PROJECT_CHAT_DATA = {
+    'sg-markets': [
+        {
+            question: "Pitch & résumé",
+            answer: "J'ai travaillé en tant que Product Designer (Alternance) pendant 1 an sur <a href='#context' class='chat-internal-link'>SG Markets</a>, la plateforme B2B de Société Générale. J'ai été amené à concevoir des parcours utilisateurs sur divers services financiers."
+        },
+        {
+            question: "Rôle & responsabilités",
+            answer: "Je suis intervenu sur 4 axes : Conception complète (design-led), Co-conception en ateliers, Amélioration continue (evolution requests), et Contrôle qualité (UI Review)."
+        },
+        {
+            question: "Problématique B2B",
+            answer: "Le défi principal était de hiérarchiser des masses d'informations denses sans noyer les utilisateurs, en m'adaptant au jargon technique complexe de la finance. <a href='#ux-focus' class='chat-internal-link'>📍 Voir la section</a>"
+        },
+        {
+            question: "Méthodologie & Design System",
+            answer: "Ma démarche est en 6 étapes : Cadrage, Architecture, Prototypage, Tests, Métriques, Suivi. L'utilisation et l'enrichissement du Design System étaient primordiaux. <a href='#process' class='chat-internal-link'>📍 Voir la démarche</a>"
+        }
+    ],
+    'elementary-land': [
+        {
+            question: "Pitch & concept",
+            answer: "ElementaryLand est un parc d'attractions virtuel sur Minecraft géré par un collectif d'une dizaine de bénévoles, actif depuis 2019 et réunissant plus de 500 membres."
+        },
+        {
+            question: "Rôle de Mathieu",
+            answer: "Je suis créateur, administrateur et designer UI/UX. J'ai piloté l'évolution de la structure, la refonte technique et l'organisation collective. <a href='#management-solution' class='chat-internal-link'>📍 Voir la gestion</a>"
+        },
+        {
+            question: "Onboarding & drop-off",
+            answer: "Pour contrer l'abandon précoce, nous avons refondu l'onboarding pour qu'il soit interactif, progressif et intégré directement dans le jeu au lieu de pavés de texte. <a href='#onboarding-solution' class='chat-internal-link'>📍 Voir l'onboarding</a>"
+        },
+        {
+            question: "Économie & UI",
+            answer: "Nous avons structuré une économie liée au temps de jeu et aux attractions, couplée à un design d'interface 100% personnalisé (Resource pack et modèles 3D). <a href='#economy-solution' class='chat-internal-link'>📍 Voir l'économie</a>"
+        }
+    ]
+};
+
+function initProjectChatbot() {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    if (!toggleBtn) return; // Only exists on project pages
+
+    const projectId = toggleBtn.getAttribute('data-project');
+    const projectData = PROJECT_CHAT_DATA[projectId];
+    if (!projectData) return;
+
+    // Immediately make the button visible
+    toggleBtn.classList.add('visible');
+
+    // Build the drawer DOM
+    const drawer = document.createElement('div');
+    drawer.className = 'project-chat-drawer';
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.innerHTML = `
+        <div class="chat-drawer-header">
+            <div class="chat-drawer-title">
+                <span class="status-dot"></span>
+                <span>Assistant Projet</span>
+            </div>
+            <button class="chat-close-btn" aria-label="Fermer le chat">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="chat-messages-area">
+            <div class="chat-bubble bot">
+                Bonjour ! Je suis l'assistant dédié à ce projet. Que souhaitez-vous savoir ?
+            </div>
+        </div>
+        <div class="chat-chips-area">
+            ${projectData.map((data, index) => `<button class="chat-chip font-mono" data-index="${index}">${data.question}</button>`).join('')}
+        </div>
+    `;
+
+    document.body.appendChild(drawer);
+
+    const closeBtn = drawer.querySelector('.chat-close-btn');
+    const messagesArea = drawer.querySelector('.chat-messages-area');
+    const chipsArea = drawer.querySelector('.chat-chips-area');
+    const chips = drawer.querySelectorAll('.chat-chip');
+
+    let isOpen = false;
+
+    function openChat() {
+        isOpen = true;
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        toggleBtn.setAttribute('aria-pressed', 'true');
+    }
+
+    function closeChat() {
+        isOpen = false;
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        toggleBtn.setAttribute('aria-pressed', 'false');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        if (isOpen) {
+            closeChat();
+        } else {
+            openChat();
+        }
+    });
+
+    closeBtn.addEventListener('click', closeChat);
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
+            closeChat();
+        }
+    });
+
+    // Intercept internal links in chat to close it and trigger smooth scroll
+    messagesArea.addEventListener('click', (e) => {
+        if (e.target.classList.contains('chat-internal-link')) {
+            const targetId = e.target.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                closeChat();
+                
+                setTimeout(() => {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    // Ouvrir l'accordéon correspondant si c'est le cas, sans déclencher de clic d'ancre natif (qui bloque le scroll)
+                    let triggerSelector = null;
+                    if (targetId === '#onboarding-solution') triggerSelector = '.onboarding-trigger';
+                    else if (targetId === '#economy-solution') triggerSelector = '.economy-trigger';
+                    else if (targetId === '#management-solution') triggerSelector = '.management-trigger';
+
+                    if (triggerSelector) {
+                        const triggerBtn = document.querySelector(triggerSelector);
+                        if (triggerBtn && triggerBtn.getAttribute('aria-expanded') === 'false') {
+                            triggerBtn.click();
+                        }
+                    }
+                }
+            }, 300); // Wait for chat to close before scrolling
+            }
+        }
+    });
+
+    let clickedChipsCount = 0;
+    let finalChipShown = false;
+    const totalChips = chips.length;
+
+    // Handle chip clicks
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const idx = chip.getAttribute('data-index');
+            const data = projectData[idx];
+
+            // 1. Remove the chip
+            chip.remove();
+            clickedChipsCount++;
+
+            // 2. Append User bubble
+            const userBubble = document.createElement('div');
+            userBubble.className = 'chat-bubble user';
+            userBubble.textContent = data.question;
+            messagesArea.appendChild(userBubble);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+
+            // 3. Show typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'typing-indicator';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            messagesArea.appendChild(typingIndicator);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+
+            // 4. After 600ms, replace typing indicator with bot response
+            setTimeout(() => {
+                typingIndicator.remove();
+                const botBubble = document.createElement('div');
+                botBubble.className = 'chat-bubble bot';
+                messagesArea.appendChild(botBubble);
+                
+                typeWriterHTML(botBubble, data.answer, 15, () => {
+                    // 5. Show final chip if all questions have been asked
+                    if (clickedChipsCount === totalChips && !finalChipShown) {
+                        finalChipShown = true;
+                        setTimeout(() => {
+                            const finalChip = document.createElement('button');
+                            finalChip.className = 'chat-chip font-mono';
+                            finalChip.style.borderColor = 'var(--color-accent)';
+                            finalChip.style.color = 'var(--color-accent)';
+                            finalChip.textContent = "J'ai d'autres questions !";
+                            chipsArea.appendChild(finalChip);
+
+                            finalChip.addEventListener('click', () => {
+                                finalChip.remove();
+                                
+                                const finalUserBubble = document.createElement('div');
+                                finalUserBubble.className = 'chat-bubble user';
+                                finalUserBubble.textContent = "J'ai d'autres questions !";
+                                messagesArea.appendChild(finalUserBubble);
+                                messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                                const finalTyping = document.createElement('div');
+                                finalTyping.className = 'typing-indicator';
+                                finalTyping.innerHTML = '<span></span><span></span><span></span>';
+                                messagesArea.appendChild(finalTyping);
+                                messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                                setTimeout(() => {
+                                    finalTyping.remove();
+                                    const contactBubble = document.createElement('div');
+                                    contactBubble.className = 'chat-bubble bot';
+                                    messagesArea.appendChild(contactBubble);
+                                    
+                                    const introHtml = "Avec grand plaisir ! N'hésitez pas à me contacter via l'un de ces canaux :<br><br>";
+                                    const linksHtml = "• <a href='mailto:mathieu.elion@gmail.com' class='chat-internal-link' style='text-transform:none;'>mathieu.elion@gmail.com</a><br>• <a href='https://www.linkedin.com/in/mathieu-elion' target='_blank' rel='noopener noreferrer' class='chat-internal-link' style='text-transform:none;'>Mon profil LinkedIn</a><br>• <a href='./assets/cv-mathieu-elion.pdf' target='_blank' rel='noopener noreferrer' class='chat-internal-link' style='text-transform:none;'>Mon CV au format PDF</a>";
+                                    
+                                    typeWriterHTML(contactBubble, introHtml, 15, () => {
+                                        contactBubble.innerHTML += linksHtml;
+                                        messagesArea.scrollTop = messagesArea.scrollHeight;
+                                    });
+                                }, 600);
+                            });
+                        }, 400); // wait slightly before showing final chip
+                    }
+                });
+            }, 600);
+        });
+    });
+}
+
+/**
+ * ============================================================================
+ * WIP FEATURES (SPLASH SCREEN & BANNER)
+ * ============================================================================
+ * Manages the initial "Work In Progress" warning overlay and persistent sticky banner.
+ */
+function initWipFeatures() {
+    const splash = document.getElementById('wip-splash');
+    const splashEnterBtn = document.getElementById('wip-splash-enter');
+    const banner = document.getElementById('wip-banner');
+    const bannerCloseBtn = document.getElementById('wip-banner-close');
+
+    // Check storage for Splash
+    const splashSeen = sessionStorage.getItem('wip_splash_seen');
+    if (!splashSeen && splash) {
+        // Show Splash
+        splash.classList.remove('hidden');
+        splash.removeAttribute('aria-hidden');
+        // Prevent scrolling while splash is visible
+        document.body.style.overflow = 'hidden';
+    }
+
+    if (splashEnterBtn && splash) {
+        splashEnterBtn.addEventListener('click', () => {
+            sessionStorage.setItem('wip_splash_seen', 'true');
+            splash.classList.add('is-hiding');
+            document.body.style.overflow = '';
+            
+            // Wait for animation to finish before removing from DOM flow
+            setTimeout(() => {
+                splash.classList.add('hidden');
+            }, 300); // matches --transition-normal (typically 250ms/300ms)
+        });
+    }
+
 }
 
