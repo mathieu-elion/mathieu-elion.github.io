@@ -16,6 +16,19 @@
     <link rel="stylesheet" href="./src/styles/main.css">
 </head>
 <body class="bg-main m-0 p-0 overflow-x-hidden w-full">
+    <!-- WIP SPLASH SCREEN -->
+    <div id="wip-splash" class="wip-splash-screen flex flex-col items-center justify-center hidden" aria-hidden="true">
+        <div class="wip-splash-content text-center max-w-2xl px-6 flex flex-col items-center justify-center">
+            <span class="font-mono text-accent mb-4 block">> STATUS: CHANTIER EN COURS 🚧</span>
+            <h1 class="hero-title mb-6" style="font-size: 3rem;">Bienvenue.</h1>
+            <p class="text-secondary mb-8 text-lg">Ce portfolio est actuellement en cours de création. Certaines pages ou fonctionnalités peuvent être incomplètes, mais vous pouvez déjà explorer mon travail récent.</p>
+            <div class="flex gap-4 flex-wrap justify-center items-center mt-2">
+                <button id="wip-splash-enter" class="btn btn-primary" style="white-space: nowrap;">Découvrir quand même</button>
+                <a href="./assets/cv-mathieu-elion.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="white-space: nowrap;">Consulter mon CV</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light-theme');
@@ -28,8 +41,16 @@
 <!-- ===================================================================             SITE HEADER
              ========================================================================== -->
         <!-- Center the content using layout-wrapper inside full-width container -->
-        <header id="site-header" class="site-header">
-            <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between h-full">
+        <header id="site-header" class="site-header flex flex-col">
+            <!-- WIP PERMANENT BANNER -->
+            <div id="wip-banner" class="wip-sticky-banner">
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <span class="font-bold text-primary">🚧 Chantier en cours</span> — Ce portfolio est en cours de création. Certaines fonctionnalités peuvent être incomplètes.
+                    </div>
+                </div>
+            </div>
+            <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between" style="min-height: 64px;">
                 <a href="./index.html" class="logo font-mono font-bold text-accent hover-effect"><span class="logo-text">ME.</span><span class="nav-breadcrumb"></span></a>
                 <nav class="nav-navigation relative">
                     <button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
@@ -104,8 +125,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-primary">Télécharger mon CV</a>
-                            <a href="mailto:mathieu.elion@gmail.com" class="btn btn-outline">Me contacter</a>
+                            <a href="./assets/cv-mathieu-elion.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Consulter mon CV</a>
+                            <a href="#site-footer" class="btn btn-outline">Me contacter</a>
                         </div>
                     </div>
 
@@ -295,9 +316,9 @@
                 <!-- Top Row: Contact & Availability -->
                 <div class="footer-top flex-col md-flex-row md-between md-align-start mb-12">
                     <div class="footer-content max-w-2xl mb-8 md-mb-0">
-                        <h2 class="text-xl font-bold mb-2">Travaillons ensemble.</h2>
+                        <h2 class="text-xl font-bold mb-2">Échangeons.</h2>
                         <p class="text-secondary m-0">
-                            Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Discutons de votre prochain défi ou parlons simplement de design !
+                            Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Une opportunité ou une question sur mes projets ? Écrivez-moi.
                         </p>
                     </div>
 
@@ -319,7 +340,7 @@
                     <div class="footer-links flex gap-6">
                         <a href="https://www.linkedin.com/in/mathieu-elion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://behance.net/mathieuelion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect">Télécharger CV</a>
+                        <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Consulter CV</a>
                     </div>
                 </div>
             </div>

@@ -23,8 +23,16 @@
     <!-- ==========================================================================
          SITE HEADER
          ========================================================================== -->
-    <header id="site-header" class="site-header">
-        <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between h-full">
+    <header id="site-header" class="site-header flex flex-col">
+        <!-- WIP PERMANENT BANNER -->
+        <div id="wip-banner" class="wip-sticky-banner">
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span class="font-bold text-primary">🚧 Chantier en cours</span> — Ce portfolio est en cours de création. Certaines fonctionnalités peuvent être incomplètes.
+                </div>
+            </div>
+        </div>
+        <div class="layout-wrapper header-padding w-full mx-auto relative z-10 flex items-center justify-between" style="min-height: 64px;">
             <a href="./index.html" class="logo font-mono font-bold text-accent hover-effect"><span class="logo-text">ME.</span><span class="nav-breadcrumb"></span></a>
             <nav class="nav-navigation relative">
                 <button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
@@ -277,9 +285,9 @@
             <!-- Top Row: Contact & Availability -->
             <div class="footer-top flex-col md-flex-row md-between md-align-start mb-12">
                 <div class="footer-content max-w-2xl mb-8 md-mb-0">
-                    <h2 class="text-xl font-bold mb-2">Travaillons ensemble.</h2>
+                    <h2 class="text-xl font-bold mb-2">Échangeons.</h2>
                     <p class="text-secondary m-0">
-                        Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Discutons de votre prochain défi ou parlons simplement de design !
+                        Disponible pour un poste de Product ou UX Designer à partir de septembre 2026. Une opportunité ou une question sur mes projets ? Écrivez-moi.
                     </p>
                 </div>
 
@@ -301,7 +309,7 @@
                 <div class="footer-links flex gap-6">
                     <a href="https://www.linkedin.com/in/mathieu-elion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://behance.net/mathieuelion" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Behance</a>
-                    <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect">Télécharger CV</a>
+                    <a href="./assets/cv-mathieu-elion.pdf" class="font-mono text-muted text-sm hover-effect" target="_blank" rel="noopener noreferrer">Consulter CV</a>
                 </div>
             </div>
         </footer>
@@ -311,9 +319,9 @@
          EASTER EGG CONTROLLER
          Floating Button (Compact Version)
          ========================================================================== -->
-    <button id="prompt-mode-toggle" class="floating-btn-compact" aria-label="Toggle Developer Prompt Mode" aria-pressed="false">
-        <span class="icon font-mono font-bold" aria-hidden="true">🪄</span>
-        <span class="btn-tooltip font-mono" aria-live="polite">Behind the Scenes</span>
+    <button id="chatbot-toggle" class="floating-btn-compact chatbot-btn" aria-label="Ouvrir l'Assistant Projet" aria-pressed="false" data-project="sg-markets">
+        <span class="icon font-mono font-bold" aria-hidden="true">🤖</span>
+        <span class="btn-tooltip font-mono" aria-live="polite">Assistant Projet</span>
     </button>
 
     <!-- Scripts -->
